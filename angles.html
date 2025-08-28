@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comp Angles</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <style>
+	
+	body {
+		font-family: Rubik;
+	}
+        #hand1, #hand2, #hand3 {
+            background-color: blue;
+            width: 100px;
+            height: 1px;
+            transform-origin: left center;
+       
+           padding: 3px;
+            
+            position: absolute;
+            left: 140px;
+        }
+
+        #finder1 {
+            position: relative;
+        }
+
+        #anglable {
+            margin-top: 20px;
+
+        }
+
+        .popup {
+            z-index: 100;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+		
+		img {
+			float: right;
+		}
+	
+.contains {
+	background-color: #fffb0096;
+    padding: 10px;
+    border-radius: 7px;
+	
+}
+
+button {
+
+	border-radius: 2px;
+background-color: rgba(255, 255, 255, 0.5);
+	
+
+}
+
+input[type="submit"] {
+background-color: rgba(190, 190, 190, 0.5);
+}
+
+       
+    
+    </style>
+</head>
+<body>
+<div class="contains">
+    <h1 id="title">Angle quiz Y5-9</h1>
+    <h3>By William Tran</h3>
+	<h5 id="timer">0s</h5>
+    <br>
+   
+    <div class="potractor">
+
+    <div id="hand1"></div>
+
+   <div id="hand2">
+
+    </div>
+    <div id="hand3"></div>
+             <br>
+    </div>
+
+    <form><br/><br><br><br><br><br>
+        <label for="finder1">x = </label><input name="finders1" type="text" id="finder1">
+        
+    </form>
+	<br>
+    <input type="submit" onclick="checker()">
+    <img src="documentation.png">       
+	<div class="showers">
+	
+    <p id="angleShow">x = ?</p>
+    <p id="angleShow2"></p>
+     <p id="angleShow3">Solved: 0</p>
+	 </div>
+
+    <button onclick="autosolve()">AutoSolve</button>
+     <button onclick="supplementary()">Supplementary</button>
+     <button onclick="revert()">Complementary</button>
+	<button onclick="times()" id="timeBut">Start Timer</button>
+	<br>
+<br>
+	</div>
+    <script>
+        let angles = Math.floor((Math.random() * 91))
+        let comp = 90 - angles
+	let strAngles = String(angles)
+        const hand1 = document.getElementById("hand1")
+        const hand2 = document.getElementById("hand2")
+        const hand3 = document.getElementById("hand3")
+      	const finder1 = document.getElementById("finder1")
+	const title = document.getElementById("title")
+	const timer = document.getElementById("timer")
+	const timeBut = document.getElementById("timeBut")
+	let second = 0
+	
+	timer.innerHTML = second + "s"
+
+        let supple = false
+       let autoSolving = false
+           const angleShow = document.getElementById("angleShow")
+             const angleShow2 = document.getElementById("angleShow2")
+            const angleShow3 = document.getElementById("angleShow3")
+            let corrects = 0
+
+            
+            let solved = 0
+        angleShow2.innerHTML = "y = " + comp
+        hand2.style.transform = "rotate(" + angles + "deg)"
+          hand3.style.transform = "rotate(90deg)"
+          console.log(angles)
+
+          while (angles <= 20) {
+            angles = Math.floor((Math.random() * 90) + 1)
+          }
+        function checker() {
+            if (parseInt(finder1.value) === angles) {
+			solved++
+ angleShow3.innerHTML = "Solved: " + solved
+            
+			   
+			   finder1.value = ""
+               if (!supple) {
+                angles = Math.floor((Math.random() * 91))
+                comp = 90 - angles
+               }
+
+               if (supple) {
+                angles = Math.floor((Math.random() * 181))
+                comp = 180 - angles
+               }
+                angleShow2.innerHTML = "y = " + comp
+        hand2.style.transform = "rotate(" + angles + "deg)"
+       
+	
+	
+		title.innerHTML = "You Are Correct!"
+		
+		document.body.style.backgroundColor = "lime"
+
+		setTimeout(function() {
+		title.innerHTML = "Angle Quiz"
+		document.body.style.backgroundColor = "white"
+
+		}, 1200)
+
+	
+            }
+
+            else {
+                title.innerHTML = "Your Incorrect!"
+		document.body.style.backgroundColor = "red"
+
+		setInterval(function() {
+		title.innerHTML = "Angle Quiz"
+		document.body.style.backgroundColor = "white"
+
+		}, 1200)
+            }
+        }
+
+        function autosolve() {
+            autoSolving = true
+             if (autoSolving) {
+                const autos = setInterval (() => {
+                if (!supple) {
+                angles = Math.floor((Math.random() * 91))
+                comp = 90 - angles
+                finder1.value = angles
+               }
+
+                if (supple) {
+                    angles = Math.floor((Math.random() * 181))
+                    comp = 180 - angles
+                    finder1.value = angles
+                }
+            angleShow.innerHTML = "x = " + angles
+            
+            angleShow2.innerHTML = "y = " + comp
+            solved++
+		console.log(solved + ", " + corrects + ", " + angles)
+            angleShow3.innerHTML = "Solved: " + solved
+
+            finder1.value = angles
+                    hand2.style.transform = "rotate(" + angles + "deg)"
+			
+                }, 50)
+
+
+        }
+        }
+
+        function supplementary() {
+            angles = Math.floor((Math.random() * 181))
+            hand3.style.transform = "rotate(180deg)"
+           
+        hand2.style.transform = "rotate(" + angles + "deg)"
+            comp = 180 - angles
+             angleShow2.innerHTML = "y = " + comp
+           supple = true
+
+
+
+        }
+
+        
+        function revert() {
+            angles = Math.floor((Math.random() * 91))
+            hand3.style.transform = "rotate(90deg)"
+           
+        hand2.style.transform = "rotate(" + angles + "deg)"
+            comp = 90 - angles
+             angleShow2.innerHTML = "y = " + comp
+           supple = false
+
+
+
+        }
+
+function times() {
+const secTimer = setInterval(function() { second++; timer.innerHTML = second + "s";}, 1000)
+timeBut.innerHTML = "Stop Timer"
+
+
+
+timeBut.onclick = function() {
+	clearInterval(secTimer)
+	timeBut.onclick= times
+	timeBut.innerHTML = "Continue Timer"
+timer.innerHTML = second + "s"
+
+
+	
+}
+
+}
+
+    
+
+
+    </script>
+</body>
+</html>
