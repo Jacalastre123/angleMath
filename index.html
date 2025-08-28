@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angle Math</title>
+    <title>Comp Angles</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -96,7 +96,7 @@ background-color: rgba(190, 190, 190, 0.5);
 	
     <p id="angleShow">x = ?</p>
     <p id="angleShow2"></p>
-     <p id="angleShow3">Solved: 0</p>
+     <p id="angleShow3">Accuracy: 0%</p>
 	 </div>
 
     <button onclick="autosolve()">AutoSolve</button>
@@ -105,6 +105,7 @@ background-color: rgba(190, 190, 190, 0.5);
 	<button onclick="times()" id="timeBut">Start Timer</button>
 	<br>
 <br>
+<br/><br><br><br><br><br>
 	</div>
     <script>
         let angles = Math.floor((Math.random() * 91))
@@ -130,18 +131,21 @@ background-color: rgba(190, 190, 190, 0.5);
 
             
             let solved = 0
+            let tries = 0
+
+            let score = Math.round((solved / tries) * 100)
         angleShow2.innerHTML = "y = " + comp
         hand2.style.transform = "rotate(" + angles + "deg)"
           hand3.style.transform = "rotate(90deg)"
           console.log(angles)
 
-          while (angles <= 20) {
-            angles = Math.floor((Math.random() * 90) + 1)
-          }
+     
         function checker() {
+            tries++
             if (parseInt(finder1.value) === angles) {
 			solved++
- angleShow3.innerHTML = "Solved: " + solved
+              let score = Math.round((solved / tries) * 100)
+  angleShow3.innerHTML = "Accuracy: " + score + "%"
             
 			   
 			   finder1.value = ""
@@ -175,8 +179,12 @@ background-color: rgba(190, 190, 190, 0.5);
             else {
                 title.innerHTML = "Your Incorrect!"
 		document.body.style.backgroundColor = "red"
+              let score = Math.round((solved / tries) * 100)
+            angleShow3.innerHTML = "Accuracy: " + score + "%"
+            
 
-		setInterval(function() {
+
+		setTimeout(function() {
 		title.innerHTML = "Angle Quiz"
 		document.body.style.backgroundColor = "white"
 
@@ -186,12 +194,15 @@ background-color: rgba(190, 190, 190, 0.5);
 
         function autosolve() {
             autoSolving = true
+          
+             let score = Math.round((solved / tries) * 100)
              if (autoSolving) {
                 const autos = setInterval (() => {
                 if (!supple) {
                 angles = Math.floor((Math.random() * 91))
                 comp = 90 - angles
                 finder1.value = angles
+                 tries++
                }
 
                 if (supple) {
@@ -204,7 +215,7 @@ background-color: rgba(190, 190, 190, 0.5);
             angleShow2.innerHTML = "y = " + comp
             solved++
 		console.log(solved + ", " + corrects + ", " + angles)
-            angleShow3.innerHTML = "Solved: " + solved
+            angleShow3.innerHTML = "Accuracy: " + score + "%"
 
             finder1.value = angles
                     hand2.style.transform = "rotate(" + angles + "deg)"
@@ -216,6 +227,10 @@ background-color: rgba(190, 190, 190, 0.5);
         }
 
         function supplementary() {
+               if (supple ) {
+            tries++
+            }
+            score = (solved / tries) * 100
             angles = Math.floor((Math.random() * 181))
             hand3.style.transform = "rotate(180deg)"
            
@@ -230,6 +245,10 @@ background-color: rgba(190, 190, 190, 0.5);
 
         
         function revert() {
+            if (supple ) {
+            tries++
+            }
+              let score = Math.round((solved / tries) * 100)
             angles = Math.floor((Math.random() * 91))
             hand3.style.transform = "rotate(90deg)"
            
@@ -260,6 +279,12 @@ timer.innerHTML = second + "s"
 
 }
 
+    
+
+
+    </script>
+</body>
+</html>
     
 
 
