@@ -227,9 +227,7 @@ background-color: rgba(190, 190, 190, 0.5);
         }
 
         function supplementary() {
-               if (supple ) {
-            tries++
-            }
+          
             score = (solved / tries) * 100
             angles = Math.floor((Math.random() * 181))
             hand3.style.transform = "rotate(180deg)"
@@ -238,7 +236,7 @@ background-color: rgba(190, 190, 190, 0.5);
             comp = 180 - angles
              angleShow2.innerHTML = "y = " + comp
            supple = true
-            angleShow3.innerHTML = "Accuracy: " + score + "%"
+          
 
 
 
@@ -246,9 +244,7 @@ background-color: rgba(190, 190, 190, 0.5);
 
         
         function revert() {
-            if (supple ) {
-            tries++
-            }
+          
               let score = Math.round((solved / tries) * 100)
             angles = Math.floor((Math.random() * 91))
             hand3.style.transform = "rotate(90deg)"
@@ -257,7 +253,7 @@ background-color: rgba(190, 190, 190, 0.5);
             comp = 90 - angles
              angleShow2.innerHTML = "y = " + comp
            supple = false
-             angleShow3.innerHTML = "Accuracy: " + score + "%"
+           
 
 
         }
