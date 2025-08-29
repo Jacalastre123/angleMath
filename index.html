@@ -86,7 +86,7 @@ background-color: rgba(190, 190, 190, 0.5);
     </div>
 
     <form><br/><br><br><br><br><br>
-        <label for="finder1">x = </label><input name="finders1" type="text" id="finder1">
+        <label for="finder1">x = </label><input name="finders1" type="number" id="finder1">
         
     </form>
 	<br>
@@ -99,7 +99,7 @@ background-color: rgba(190, 190, 190, 0.5);
      <p id="angleShow3">Accuracy: 0%</p>
 	 </div>
 
-    <button onclick="autosolve()">AutoSolve</button>
+    <button id="autoSolvers" onclick="autosolve()">AutoSolve</button>
      <button onclick="supplementary()">Supplementary</button>
      <button onclick="revert()">Complementary</button>
 	<button onclick="times()" id="timeBut">Start Timer</button>
@@ -107,9 +107,6 @@ background-color: rgba(190, 190, 190, 0.5);
 <br>
 <br/><br><br><br><br><br>
 	</div>
-
-	 <a href='https://www.free-counters.org/'>Free-Counters</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=bebf62b63b8f40a0b5840ad3cc02769691a0ae1c'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1382846/t/0"></script>
     <script>
         let angles = Math.floor((Math.random() * 91))
         let comp = 90 - angles
@@ -130,6 +127,7 @@ background-color: rgba(190, 190, 190, 0.5);
            const angleShow = document.getElementById("angleShow")
              const angleShow2 = document.getElementById("angleShow2")
             const angleShow3 = document.getElementById("angleShow3")
+		 const autoSolvers = document.getElementById("autoSolvers")
             let corrects = 0
 
             
@@ -144,9 +142,11 @@ background-color: rgba(190, 190, 190, 0.5);
 
      
         function checker() {
-            tries++
+            
+		angleShow.innerHTML = "x = ?"
             if (parseInt(finder1.value) === angles) {
 			solved++
+            tries++
               let score = Math.round((solved / tries) * 100)
   angleShow3.innerHTML = "Accuracy: " + score + "%"
             
@@ -198,8 +198,11 @@ background-color: rgba(190, 190, 190, 0.5);
         function autosolve() {
             autoSolving = true
           
-             let score = Math.round((solved / tries) * 100)
+             
              if (autoSolving) {
+                solved++
+                tries++
+                let score = Math.round((solved / tries) * 100)
                 const autos = setInterval (() => {
                 if (!supple) {
                 angles = Math.floor((Math.random() * 91))
@@ -222,11 +225,15 @@ background-color: rgba(190, 190, 190, 0.5);
 
             finder1.value = angles
                     hand2.style.transform = "rotate(" + angles + "deg)"
+				autoSolvers.onclick = function() {  autoSolving = false; autoSolvers.onclick = autosolve; autoSolvers.innerHTML = "AutoSolve"; clearInterval(autos); checker();}
 			
-                }, 50)
+                }, 29)
 
-
+		autoSolvers.innerHTML = "Stop AutoSolve"
         }
+		
+
+		
         }
 
         function supplementary() {
