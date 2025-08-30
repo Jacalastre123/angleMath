@@ -100,7 +100,7 @@ background-color: rgba(190, 190, 190, 0.5);
 	
     <p id="angleShow">x = ?</p>
     <p id="angleShow2"></p>
-		<p id="angleShow35">Solved/Tries: 0</p>
+		<p id="angleShow35">Solved/Tries: 0/0</p>
      <p id="angleShow3">Accuracy: 0%</p>
 	 </div>
 
@@ -152,7 +152,7 @@ background-color: rgba(190, 190, 190, 0.5);
           hand3.style.transform = "rotate(90deg)"
           console.log(angles)
 		setInterval( function() {
-			angleShow35.innerHTML = "Solved/Tries" + solved + "/" + tries;
+			angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
 		}, 10)
      
         function checker() {
@@ -162,6 +162,7 @@ background-color: rgba(190, 190, 190, 0.5);
 			solved++
             tries++
               let score = Math.round((solved / tries) * 100)
+				angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
   angleShow3.innerHTML = "Accuracy: " + score + "%"
             
 			   
@@ -223,6 +224,7 @@ background-color: rgba(190, 190, 190, 0.5);
                 comp = 90 - angles
                 finder1.value = angles
                  tries++
+					
                }
 
                 if (supple) {
@@ -233,7 +235,9 @@ background-color: rgba(190, 190, 190, 0.5);
             angleShow.innerHTML = "x = " + angles
             
             angleShow2.innerHTML = "y = " + comp
+					
             solved++
+					angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
 		console.log(solved + ", " + corrects + ", " + angles)
             angleShow3.innerHTML = "Accuracy: " + score + "%"
 
@@ -260,6 +264,7 @@ background-color: rgba(190, 190, 190, 0.5);
             comp = 180 - angles
              angleShow2.innerHTML = "y = " + comp
            supple = true
+			angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
           
 
 
@@ -277,6 +282,7 @@ background-color: rgba(190, 190, 190, 0.5);
             comp = 90 - angles
              angleShow2.innerHTML = "y = " + comp
            supple = false
+			angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
            
 
 
@@ -312,6 +318,10 @@ timer.innerHTML = second + "s"
 			closer.style.backgroundColor = "red"
 			closer.style.color = "white"
 			closer.innerHTML = "Close"
+			closer.onclick = function() {
+				popsups.remove()
+				
+			}
 			popsups.appendChild(closer)
 		}
 
