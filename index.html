@@ -38,6 +38,9 @@
             position: absolute;
             top: 0;
             right: 0;
+			background-color: white;
+			border: powderblue 2px solid;
+			border-radius: 5px;
         }
 		
 		img {
@@ -54,7 +57,8 @@
 button {
 
 	border-radius: 2px;
-background-color: rgba(255, 255, 255, 0.5);
+background-color: rgba(255, 255, 255, 0.3);
+	
 	
 
 }
@@ -96,6 +100,7 @@ background-color: rgba(190, 190, 190, 0.5);
 	
     <p id="angleShow">x = ?</p>
     <p id="angleShow2"></p>
+		<p id="angleShow35">Solved/Tries: 0</p>
      <p id="angleShow3">Accuracy: 0%</p>
 	 </div>
 
@@ -103,8 +108,10 @@ background-color: rgba(190, 190, 190, 0.5);
      <button onclick="supplementary()">Supplementary</button>
      <button onclick="revert()">Complementary</button>
 	<button onclick="times()" id="timeBut">Start Timer</button>
+	<button onclick="HelpPls()" id="helpBut">Help</button>
 	<br>
 <br>
+<h5><strong>Need Help?</strong><br/><br>This is an angle quiz that quizzes you on <strong>Compelentary angles(Adds to 90 degrees) and Supplementary Angles (Adds to 180 degrees)</strong> For both, you must subtract y to find the other angle which is X (The answer).<br><br>If you wonder whats complementary, it is when the first line and the last line of the angle looks like a corner of a square so you should <strong>subtract y with 90 degrees to find x which is the answer</strong> as supplementary is when the first and last lines join eachother to look like one line on top of the dividing one, in this case <strong>subtract y from 180 degrees to find x which is the answer.</strong></h5>
 <br/><br><br><br><br><br>
 	</div>
 
@@ -121,6 +128,7 @@ background-color: rgba(190, 190, 190, 0.5);
 	const title = document.getElementById("title")
 	const timer = document.getElementById("timer")
 	const timeBut = document.getElementById("timeBut")
+		const helpBut = document.getElementById("timeBut")
 	let second = 0
 	
 	timer.innerHTML = second + "s"
@@ -129,7 +137,8 @@ background-color: rgba(190, 190, 190, 0.5);
        let autoSolving = false
            const angleShow = document.getElementById("angleShow")
              const angleShow2 = document.getElementById("angleShow2")
-            const angleShow3 = document.getElementById("angleShow3")
+            const angleShow3 = document.getElementById("angleShow3") 
+				const angleShow35 = document.getElementById("angleShow35")
 		 const autoSolvers = document.getElementById("autoSolvers")
             let corrects = 0
 
@@ -142,7 +151,9 @@ background-color: rgba(190, 190, 190, 0.5);
         hand2.style.transform = "rotate(" + angles + "deg)"
           hand3.style.transform = "rotate(90deg)"
           console.log(angles)
-
+		setInterval( function() {
+			angleShow35.innerHTML = "Solved/Tries" + solved + "/" + tries;
+		}, 10)
      
         function checker() {
             
@@ -288,6 +299,21 @@ timer.innerHTML = second + "s"
 }
 
 }
+
+		function helpPls() {
+
+			
+			const popsups = document.createElement("div")
+			popsups.classList = "popup"
+			popsUps.innerHTML = "This is an angle quiz that quizzes you on <strong>Compelentary angles(Adds to 90 degrees) and Supplementary Angles (Adds to 180 degrees)</strong> For both, you must subtract y to find the other angle which is X (The answer).<br><br>If you wonder whats complementary, it is when the first line and the last line of the angle looks like a corner of a square so you should <strong>subtract y with 90 degrees to find x which is the answer</strong> as supplementary is when the first and last lines join eachother to look like one line on top of the dividing one, in this case <strong>subtract y from 180 degrees to find x which is the answer.</strong>"
+			document.body.appendChild(popsups)
+
+			const closer = document.createElement("button")
+			closer.style.backgroundColor = "red"
+			closer.style.color = "white"
+			popsUps.innerHTML = "Close"
+			popsups.appendChild(closer)
+		}
 
     
 
