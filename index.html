@@ -164,8 +164,10 @@ background-color: rgba(190, 190, 190, 0.5);
             if (parseInt(finder1.value) === angles) {
 			solved++
             tries++
+				if (solved > 0 && tries > 0) {
 				
               let score = Math.round((solved / tries) * 100)
+				}
 				angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
   angleShow3.innerHTML = "Accuracy: " + score + "%"
             
@@ -201,6 +203,7 @@ background-color: rgba(190, 190, 190, 0.5);
             else {
                 title.innerHTML = "Your Incorrect!"
 		document.body.style.backgroundColor = "red"
+				tries++
               let score = Math.round((solved / tries) * 100)
             angleShow3.innerHTML = "Accuracy: " + score + "%"
 			
