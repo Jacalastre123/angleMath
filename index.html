@@ -202,6 +202,11 @@ background-color: rgba(190, 190, 190, 0.5);
 		document.body.style.backgroundColor = "red"
               let score = Math.round((solved / tries) * 100)
             angleShow3.innerHTML = "Accuracy: " + score + "%"
+				if (score === NaN) {
+					score = 0
+				}
+
+				
             
 
 
@@ -213,6 +218,9 @@ background-color: rgba(190, 190, 190, 0.5);
 
 		}, 1200)
             }
+
+			if (score > 100) {
+				score = 100
         }
 
         function autosolve() {
