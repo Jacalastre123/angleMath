@@ -164,6 +164,7 @@ background-color: rgba(190, 190, 190, 0.5);
             if (parseInt(finder1.value) === angles) {
 			solved++
             tries++
+				
               let score = Math.round((solved / tries) * 100)
 				angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
   angleShow3.innerHTML = "Accuracy: " + score + "%"
@@ -202,10 +203,7 @@ background-color: rgba(190, 190, 190, 0.5);
 		document.body.style.backgroundColor = "red"
               let score = Math.round((solved / tries) * 100)
             angleShow3.innerHTML = "Accuracy: " + score + "%"
-				if (score = 0 / 0) {
-					score = 0
-				}
-
+			
 				
             
 
@@ -219,10 +217,6 @@ background-color: rgba(190, 190, 190, 0.5);
 		}, 1200)
             }
 
-			if (score > 100) {
-			score = 100
-				angleShow3.innerHTML = "Accuracy: " + score + "%"
-			}
         }
 
         function autosolve() {
@@ -249,13 +243,13 @@ background-color: rgba(190, 190, 190, 0.5);
                 }
 					solved++
                  tries++
-
+					
 					    let score = Math.round((solved / tries) * 100)
             angleShow.innerHTML = "x = " + angles
             
             angleShow2.innerHTML = "y = " + comp
 					
-            solved++
+       
 					angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
 		console.log(solved + ", " + corrects + ", " + angles)
             angleShow3.innerHTML = "Accuracy: " + score + "%"
