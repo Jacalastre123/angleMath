@@ -154,22 +154,29 @@ background-color: rgba(190, 190, 190, 0.5);
         hand2.style.transform = "rotate(" + angles + "deg)"
           hand3.style.transform = "rotate(90deg)"
           console.log(angles)
+
+		function unNaN() {
+			return tries > 0 ? Math.round((solved / tries) * 100)
+		}
 		setInterval( function() {
-			angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
+			
+			angleShow35.innerHTML = "Solved/Tries: " + unNaN() + "/" + tries;
 		}, 10)
-     
+
+
+		
         function checker() {
             
 		angleShow.innerHTML = "x = ?"
             if (parseInt(finder1.value) === angles) {
 			solved++
             tries++
-				if (solved > 0 && tries > 0) {
+			if (solved > 0 && tries > 0) {
 				
-              let score = Math.round((solved / tries) * 100)
-				}
+            let score = Math.round((solved / tries) * 100)
+			}
 				angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
-  angleShow3.innerHTML = "Accuracy: " + score + "%"
+  angleShow3.innerHTML = "Accuracy: " + unNaN() + "%"
             
 			   
 			   finder1.value = ""
@@ -205,7 +212,7 @@ background-color: rgba(190, 190, 190, 0.5);
 		document.body.style.backgroundColor = "red"
 				tries++
               let score = Math.round((solved / tries) * 100)
-            angleShow3.innerHTML = "Accuracy: " + score + "%"
+            angleShow3.innerHTML = "Accuracy: " + unNaN() + "%"
 			
 				
             
@@ -215,7 +222,7 @@ background-color: rgba(190, 190, 190, 0.5);
 		title.innerHTML = "Angle Quiz"
 		document.body.style.backgroundColor = "white"
 			let score = Math.round((solved / tries) * 100)
-            angleShow3.innerHTML = "Accuracy: " + score + "%"
+            angleShow3.innerHTML = "Accuracy: " + unNaN() + "%"
 
 		}, 1200)
             }
@@ -247,13 +254,13 @@ background-color: rgba(190, 190, 190, 0.5);
 					solved++
                  tries++
 					
-					    let score = Math.round((solved / tries) * 100)
+					    score = Math.round((solved / tries) * 100)
             angleShow.innerHTML = "x = " + angles
             
             angleShow2.innerHTML = "y = " + comp
 					
        
-					angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
+					angleShow35.innerHTML = "Solved/Tries: " + unNaN() + "/" + tries;
 		console.log(solved + ", " + corrects + ", " + angles)
             angleShow3.innerHTML = "Accuracy: " + score + "%"
 
