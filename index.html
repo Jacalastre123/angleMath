@@ -160,7 +160,7 @@ background-color: rgba(190, 190, 190, 0.5);
 		}
 		setInterval( function() {
 			
-			angleShow35.innerHTML = "Solved/Tries: " + unNaN() + "/" + tries;
+			angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
 		}, 10)
 
 
@@ -262,7 +262,7 @@ background-color: rgba(190, 190, 190, 0.5);
        
 					angleShow35.innerHTML = "Solved/Tries: " + unNaN() + "/" + tries;
 		console.log(solved + ", " + corrects + ", " + angles)
-            angleShow3.innerHTML = "Accuracy: " + score + "%"
+            angleShow3.innerHTML = "Accuracy: " + unNaN() + "%"
 
             finder1.value = angles
                     hand2.style.transform = "rotate(" + angles + "deg)"
