@@ -218,15 +218,15 @@ background-color: rgba(190, 190, 190, 0.5);
           
              
              if (autoSolving) {
-                solved++
-                tries++
-                let score = Math.round((solved / tries) * 100)
+                
+                
                 const autos = setInterval (() => {
                 if (!supple) {
                 angles = Math.floor((Math.random() * 91))
                 comp = 90 - angles
+					
                 finder1.value = angles
-                 tries++
+					
 					
                }
 
@@ -235,6 +235,10 @@ background-color: rgba(190, 190, 190, 0.5);
                     comp = 180 - angles
                     finder1.value = angles
                 }
+					solved++
+                 tries++
+
+					    let score = Math.round((solved / tries) * 100)
             angleShow.innerHTML = "x = " + angles
             
             angleShow2.innerHTML = "y = " + comp
