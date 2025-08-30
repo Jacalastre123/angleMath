@@ -208,6 +208,8 @@ background-color: rgba(190, 190, 190, 0.5);
 		setTimeout(function() {
 		title.innerHTML = "Angle Quiz"
 		document.body.style.backgroundColor = "white"
+			let score = Math.round((solved / tries) * 100)
+            angleShow3.innerHTML = "Accuracy: " + score + "%"
 
 		}, 1200)
             }
