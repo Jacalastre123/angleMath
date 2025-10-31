@@ -109,12 +109,13 @@ background-color: rgba(190, 190, 190, 0.5);
 	
     
 		<p id="angleShow35">Solved/Tries: 0/0</p>
-     <p id="angleShow3">Accuracy: 0%</p>
+     <p id="angleShow3">Accuracy: <strong id="identifier">0%</strong></p>
 	 </div>
 
     <button id="autoSolvers" onclick="autosolve()">AutoSolve</button>
      <button onclick="supplementary()">Supplementary</button>
      <button onclick="revert()">Complementary</button>
+	<button onclick="revo()">Revolution</button>
 	<button onclick="times()" id="timeBut">Start Timer</button>
 
 	<br>
@@ -136,12 +137,14 @@ background-color: rgba(190, 190, 190, 0.5);
 	const timer = document.getElementById("timer")
 	const timeBut = document.getElementById("timeBut")
 		const helpBut = document.getElementById("timeBut")
+		const identifier = document.getElementById("identifier")
 	let second = 0
 	
 	timer.innerHTML = second + "s"
 
         let supple = false
        let autoSolving = false
+		let revolute = false
            const angleShow = document.getElementById("angleShow")
              const angleShow2 = document.getElementById("angleShow2")
             const angleShow3 = document.getElementById("angleShow3") 
@@ -170,7 +173,21 @@ background-color: rgba(190, 190, 190, 0.5);
 
 		
         function checker() {
-            
+            if (score > 80){
+				idenifier.style.backgroundColor = "green"
+			}
+
+			else if (score > 60 ){
+				idenifier.style.backgroundColor = "rgb(70, 160, 60)"
+			}
+
+			else if (score > 30 ){
+				idenifier.style.backgroundColor = "#BBB205"
+			}
+			else {
+				identifier.style.backgroundColor = "Red"
+			}
+			
 		angleShow.innerHTML = "x = ?"
             if (parseInt(finder1.value) === angles) {
 			solved++
@@ -255,6 +272,12 @@ background-color: rgba(190, 190, 190, 0.5);
                     comp = 180 - angles
                     finder1.value = angles
                 }
+
+					if (revolute) {
+                    angles = Math.floor((Math.random() * 361))
+                    comp = 360 - angles
+                    finder1.value = angles
+                }
 					solved++
                  tries++
 					
@@ -332,7 +355,22 @@ timer.innerHTML = second + "s"
 }
 
 }
+function revo() {
+    score = (solved / tries) * 100
+            angles = Math.floor((Math.random() * 361))
+            hand3.style.transform = "rotate(360deg)"
+           
+        hand2.style.transform = "rotate(" + angles + "deg)"
+            comp = 360 - angles
+             angleShow2.innerHTML = "y = " + comp
+           revolute = true
+			angleShow35.innerHTML = "Solved/Tries: " + solved + "/" + tries;
+          
 
+	
+}
+
+	
 	
     </script>
 </body>
